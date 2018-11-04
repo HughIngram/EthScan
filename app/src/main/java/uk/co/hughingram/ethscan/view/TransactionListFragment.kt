@@ -43,7 +43,7 @@ class TransactionListFragment : Fragment() {
     }
 
     private fun initList(transactions: List<EthereumTransaction>) {
-        val adapter = TransactionAdapter(transactions.sortedByDescending { it.nonce })
+        val adapter = TransactionAdapter(transactions.sortedByDescending { it.nonce.toInt() })
         transaction_adapter.layoutManager = LinearLayoutManager(context)
         transaction_adapter.adapter = adapter
     }
