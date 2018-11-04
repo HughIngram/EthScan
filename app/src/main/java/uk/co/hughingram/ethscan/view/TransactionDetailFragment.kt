@@ -25,5 +25,8 @@ class TransactionDetailFragment : Fragment() {
         val transaction = TransactionDetailFragmentArgs.fromBundle(arguments).transaction
         timestamp.text = transaction?.timeStamp
         block_hash.text = transaction?.blockHash
+        from.text = transaction?.from
+        to.text = transaction?.to
+        data.text = transaction?.input
     }
 }
