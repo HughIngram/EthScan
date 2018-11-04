@@ -27,16 +27,13 @@ class TransactionListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val apiClient = ApiClient()
-        apiClient.getTransactionList("0xfFfa5813ED9a5DB4880D7303DB7d0cBe41bC771F")
+        apiClient.getTransactionList(ETH_ADDRESS)
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribeBy (
-                onSuccess= {
+            .subscribeBy(
+                onSuccess = {
                     initList(it)
-                    Log.i("api-result", it.toString())
                 },
-                onError = {
-
-                }
+                onError = { Log.e("TransactionList", "error", it) }
             )
     }
 
@@ -52,3 +49,5 @@ class TransactionListFragment : Fragment() {
     }
 
 }
+
+private const val ETH_ADDRESS = "0xfFfa5813ED9a5DB4880D7303DB7d0cBe41bC771F"

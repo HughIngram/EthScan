@@ -1,5 +1,7 @@
 package uk.co.hughingram.ethscan.network
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -11,10 +13,11 @@ interface EtherScanService {
 
 }
 
-private const val API_KEY ="ZA36TYRUYRS3YNV7V9B5IWJFFM71AZZ26Y"
+private const val API_KEY = "ZA36TYRUYRS3YNV7V9B5IWJFFM71AZZ26Y"
 
 data class EtherScanTransactionList(val status: String, val message: String, val result: List<EthereumTransaction>)
 
+@Parcelize
 data class EthereumTransaction(
     val blockNumber: String,
     val blockHash: String,
@@ -33,4 +36,4 @@ data class EthereumTransaction(
     val gasUsed: String,
     val confirmations: String,
     val isError: String
-)
+) : Parcelable

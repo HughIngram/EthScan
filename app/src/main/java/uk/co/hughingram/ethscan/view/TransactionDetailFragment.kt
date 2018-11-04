@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.fragment_transaction_detail.*
 import uk.co.hughingram.ethscan.R
 
 
@@ -21,5 +22,8 @@ class TransactionDetailFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        val transaction = TransactionDetailFragmentArgs.fromBundle(arguments).transaction
+        timestamp.text = transaction?.timeStamp
+        block_hash.text = transaction?.blockHash
     }
 }
