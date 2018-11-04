@@ -21,6 +21,8 @@ class TransactionAdapter(private val transactions: List<EthereumTransaction>) :
     override fun onBindViewHolder(holder: TransactionViewHolder, position: Int) {
         val transaction = transactions[position]
         holder.timeStamp.text = transaction.timeStamp
+        holder.nonce.text = transaction.nonce
+        holder.hash.text = transaction.hash
         val directions =
             TransactionListFragmentDirections.actionToTransactionDetails().apply { setTransaction(transaction) }
         holder.setListener(
@@ -33,6 +35,8 @@ class TransactionAdapter(private val transactions: List<EthereumTransaction>) :
 
 class TransactionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val timeStamp: TextView = itemView.timestamp
+    val nonce: TextView = itemView.nonce
+    val hash: TextView = itemView.hash
 
     fun setListener(listener: View.OnClickListener) {
         itemView.setOnClickListener(listener)

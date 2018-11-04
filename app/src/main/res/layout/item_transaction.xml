@@ -1,16 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                android:layout_height="72dp">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <TextView
-            android:id="@+id/timestamp"
-            tools:text="foo bar"
-            android:layout_centerVertical="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+        android:id="@+id/lbl_nonce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="@dimen/margin_edges"
+        android:layout_marginTop="@dimen/margin_edges"
+        android:layout_marginEnd="@dimen/margin_items"
+        android:text="@string/lbl_nonce" />
+
+    <TextView
+        android:id="@+id/nonce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/lbl_nonce"
+        android:layout_toEndOf="@+id/lbl_nonce"
+        android:textStyle="bold"
+        tools:text="214756" />
+
+    <TextView
+        android:id="@+id/lbl_timestamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/lbl_nonce"
+        android:layout_marginEnd="@dimen/margin_items"
+        android:layout_toStartOf="@id/timestamp"
+        android:text="@string/lbl_timestamp"
+        tools:ignore="RelativeOverlap" />
+
+    <TextView
+        android:id="@+id/timestamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/lbl_timestamp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/margin_edges"
+        android:textStyle="bold"
+        tools:text="1518167245" />
+
+    <TextView
+        android:id="@+id/lbl_hash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lbl_nonce"
+        android:layout_alignStart="@id/lbl_nonce"
+        android:layout_marginTop="@dimen/margin_items"
+        android:layout_marginEnd="@dimen/margin_items"
+        android:text="@string/lbl_hash" />
+
+    <TextView
+        android:id="@+id/hash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/lbl_hash"
+        android:layout_marginEnd="@dimen/margin_edges"
+        android:layout_toEndOf="@id/lbl_hash"
+        android:textStyle="bold"
+        tools:text="0xd5fea65e23ed575f637c53555c461f496f49b0993cfc59d781f9ad5d50bee50e" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/hash"
+        android:layout_marginTop="@dimen/margin_items"
+        android:background="@color/colorPrimary" />
 
 </RelativeLayout>
