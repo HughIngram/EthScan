@@ -3,5 +3,6 @@
 
     <string name="lbl_timestamp">Timestamp</string>
     <string name="lbl_nonce">Nonce</string>
+    <string name="lbl_hash">Hash</string>
 
 </resources>
