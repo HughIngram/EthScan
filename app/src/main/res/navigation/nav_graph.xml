@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/nav_graph"
+            app:startDestination="@id/transactionListFragment">
+
+    <fragment
+            android:id="@+id/transactionDetailFragment"
+            android:name="uk.co.hughingram.ethscan.view.TransactionDetailFragment"
+            android:label="fragment_transaction_detail"
+            tools:layout="@layout/fragment_transaction_detail">
+        <argument
+                android:name="transaction"
+                app:nullable="true"
+                android:defaultValue="@null"
+                app:argType="uk.co.hughingram.ethscan.network.EthereumTransaction"/>
+    </fragment>
+    <fragment
+            android:id="@+id/transactionListFragment"
+            android:name="uk.co.hughingram.ethscan.view.TransactionListFragment"
+            android:label="fragment_transaction_list"
+            tools:layout="@layout/fragment_transaction_list">
+        <action
+                android:id="@+id/action_to_transaction_details"
+                app:destination="@id/transactionDetailFragment"/>
+    </fragment>
+</navigation>
