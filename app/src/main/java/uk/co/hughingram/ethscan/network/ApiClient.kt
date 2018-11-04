@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ApiClient {
 
-    fun getTransactionList(address: String): Single<List<EtherScanTransaction>> = Single.fromCallable {
+    fun getTransactionList(address: String): Single<List<EthereumTransaction>> = Single.fromCallable {
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())

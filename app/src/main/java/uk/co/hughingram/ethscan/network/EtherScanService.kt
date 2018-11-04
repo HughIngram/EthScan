@@ -6,14 +6,16 @@ import retrofit2.http.Query
 
 interface EtherScanService {
 
-    @GET("api?module=account&action=txlist&sort=asc&apikey=ZA36TYRUYRS3YNV7V9B5IWJFFM71AZZ26Y")
+    @GET("api?module=account&action=txlist&sort=asc&apikey=$API_KEY")
     fun listTransactions(@Query("address") address: String): Call<EtherScanTransactionList>
 
 }
 
-data class EtherScanTransactionList(val status: String, val message: String, val result: List<EtherScanTransaction>)
+private const val API_KEY ="ZA36TYRUYRS3YNV7V9B5IWJFFM71AZZ26Y"
 
-data class EtherScanTransaction(
+data class EtherScanTransactionList(val status: String, val message: String, val result: List<EthereumTransaction>)
+
+data class EthereumTransaction(
     val blockNumber: String,
     val blockHash: String,
     val timeStamp: String,
