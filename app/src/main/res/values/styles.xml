@@ -8,4 +8,15 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.Text" parent="AppTheme">
+
+    </style>
+
+    <style name="AppTheme.Text.Label" parent="AppTheme.Text">
+    </style>
+
+    <style name="AppTheme.Text.Value" parent="AppTheme.Text">
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>
