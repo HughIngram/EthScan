@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Eth Scan</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="lbl_timestamp">Timestamp</string>
+    <string name="lbl_nonce">Nonce</string>
+
 </resources>
