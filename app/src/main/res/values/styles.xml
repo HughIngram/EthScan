@@ -9,10 +9,11 @@
         <item name="android:colorBackground">@color/dark_blue_gray</item>
         <item name="android:textColor">@color/light_blue</item>
         <item name="android:textColorPrimary">@color/light_blue</item>
+        <item name="android:navigationBarColor">@color/slate_gray</item>
+        <item name="android:fontFamily">monospace</item>
     </style>
 
     <style name="AppTheme.Text" parent="AppTheme">
-
     </style>
 
     <style name="AppTheme.Text.Label" parent="AppTheme.Text">
