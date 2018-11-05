@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Eth Scan</string>
 
-    <string name="lbl_timestamp">Timestamp</string>
+    <string name="lbl_timestamp">Timestamp (UTC)</string>
     <string name="lbl_nonce">Nonce</string>
     <string name="lbl_hash">Hash</string>
     <string name="lbl_from">From</string>

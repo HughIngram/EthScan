@@ -5,6 +5,7 @@ import kotlinx.android.parcel.Parcelize
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
+import uk.co.hughingram.ethscan.model.DateFormatter
 import uk.co.hughingram.ethscan.model.GasCalculator
 
 interface EtherScanService {
@@ -20,6 +21,9 @@ data class EtherScanTransactionList(val status: String, val message: String, val
 
 fun EthereumTransaction.calculateGasFee(): Long =
     GasCalculator().calculateGasFee(gasUsed.toLong(), gasPrice.toLong())
+
+fun EthereumTransaction.humanReadableTimeStamp(): String =
+    DateFormatter().formatDate(timeStamp.toLong())
 
 @Parcelize
 data class EthereumTransaction(

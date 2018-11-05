@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_transaction_detail.*
 import uk.co.hughingram.ethscan.R
 import uk.co.hughingram.ethscan.network.calculateGasFee
+import uk.co.hughingram.ethscan.network.humanReadableTimeStamp
 
 
 class TransactionDetailFragment : Fragment() {
@@ -28,7 +29,7 @@ class TransactionDetailFragment : Fragment() {
 
     private fun showData() {
         val transaction = TransactionDetailFragmentArgs.fromBundle(arguments).transaction ?: return
-        timestamp.text = transaction.timeStamp
+        timestamp.text = transaction.humanReadableTimeStamp()
         block_hash.text = transaction.blockHash
         from.text = transaction.from
         to.text = transaction.to
