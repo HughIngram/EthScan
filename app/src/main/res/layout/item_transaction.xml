@@ -73,6 +73,6 @@
         android:layout_marginLeft="@dimen/margin_edges"
         android:layout_marginTop="@dimen/margin_items"
         android:layout_marginRight="@dimen/margin_edges"
-        android:background="@color/colorPrimary" />
+        android:background="?attr/colorPrimary" />
 
 </RelativeLayout>
