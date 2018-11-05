@@ -2,6 +2,7 @@ package uk.co.hughingram.ethscan.view
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
@@ -28,8 +29,12 @@ class TransactionListFragment : Fragment() {
         }
     }
 
-    private fun setUpSwipeListener() =
+    private fun setUpSwipeListener() {
         swipe_container.setOnRefreshListener { downloadTransactions() }
+        swipe_container.setProgressBackgroundColorSchemeColor(
+            ContextCompat.getColor(context!!, R.color.light_blue)
+        )
+    }
 
     private fun downloadTransactions() {
         val apiClient = ApiClient()
