@@ -26,26 +26,35 @@ class TransactionListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val cache = (activity as MainActivity).cache
+        if (cache.isEmpty()) {
+            downloadTransactions()
+        } else {
+            initList(cache)
+        }
+    }
+    private fun downloadTransactions() {
         val apiClient = ApiClient()
         apiClient.getTransactionList(ETH_ADDRESS)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(
                 onSuccess = {
                     initList(it)
+                    (activity as MainActivity).cache = it
                 },
                 onError = { Log.e("TransactionList", "error", it) }
             )
-    }
-
-    override fun onResume() {
-        super.onResume()
-        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
     }
 
     private fun initList(transactions: List<EthereumTransaction>) {
         val adapter = TransactionAdapter(transactions.sortedByDescending { it.nonce.toInt() })
         transaction_adapter.layoutManager = LinearLayoutManager(context)
         transaction_adapter.adapter = adapter
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
     }
 
 }
