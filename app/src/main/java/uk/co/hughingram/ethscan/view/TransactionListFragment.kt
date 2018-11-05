@@ -12,20 +12,14 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.fragment_transaction_list.*
 import uk.co.hughingram.ethscan.R
-import uk.co.hughingram.ethscan.network.ApiClient
 import uk.co.hughingram.ethscan.model.EthereumTransaction
+import uk.co.hughingram.ethscan.network.ApiClient
 
 class TransactionListFragment : Fragment() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_transaction_list, container, false)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setUpSwipeListener()
         val cache = (activity as MainActivity).cache
         if (cache.isEmpty()) {
             downloadTransactions()
@@ -33,16 +27,28 @@ class TransactionListFragment : Fragment() {
             initList(cache)
         }
     }
+
+    private fun setUpSwipeListener() =
+        swipe_container.setOnRefreshListener { downloadTransactions() }
+
     private fun downloadTransactions() {
         val apiClient = ApiClient()
         apiClient.getTransactionList(ETH_ADDRESS)
             .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe {
+                swipe_container.isRefreshing = true
+            }
+            .doFinally {
+                swipe_container.isRefreshing = false
+            }
             .subscribeBy(
-                onSuccess = {
-                    initList(it)
-                    (activity as MainActivity).cache = it
+                onSuccess = { transactionList ->
+                    initList(transactionList)
+                    (activity as MainActivity).cache = transactionList
                 },
-                onError = { Log.e("TransactionList", "error", it) }
+                onError = { e ->
+                    Log.e("TransactionList", "error", e)
+                }
             )
     }
 
@@ -50,6 +56,13 @@ class TransactionListFragment : Fragment() {
         val adapter = TransactionAdapter(transactions.sortedByDescending { it.nonce.toInt() })
         transaction_adapter.layoutManager = LinearLayoutManager(context)
         transaction_adapter.adapter = adapter
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_transaction_list, container, false)
     }
 
     override fun onResume() {
