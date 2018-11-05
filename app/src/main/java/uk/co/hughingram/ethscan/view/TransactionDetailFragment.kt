@@ -33,6 +33,7 @@ class TransactionDetailFragment : Fragment() {
         block_hash.text = transaction.blockHash
         from.text = transaction.from
         to.text = transaction.to
+        value.text = transaction.value
         data.text = transaction.input
         gas_fees.text = transaction.calculateGasFee().toString()
     }

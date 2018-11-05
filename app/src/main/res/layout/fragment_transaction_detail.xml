@@ -110,13 +110,43 @@
             app:layout_constraintTop_toBottomOf="@id/to" />
 
         <TextView
+            android:id="@+id/lbl_value"
+            style="@style/AppTheme.Text.Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_edges"
+            android:text="@string/lbl_value"
+            app:layout_constraintTop_toBottomOf="@id/divider_to" />
+
+        <TextView
+            android:id="@+id/value"
+            style="@style/AppTheme.Text.Value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_items"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/values_guideline"
+            app:layout_constraintTop_toBottomOf="@id/lbl_value"
+            tools:text="18750000000000000000" />
+
+        <View
+            android:id="@+id/divider_value"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="@dimen/margin_edges"
+            android:background="@color/colorPrimary"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/value" />
+
+        <TextView
             android:id="@+id/lbl_hash"
             style="@style/AppTheme.Text.Label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_edges"
             android:text="@string/lbl_hash"
-            app:layout_constraintTop_toBottomOf="@+id/divider_to" />
+            app:layout_constraintTop_toBottomOf="@+id/divider_value" />
 
         <TextView
             android:id="@+id/block_hash"
