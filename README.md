@@ -10,3 +10,6 @@ An app for exploring the transactions of an Ethereum address.
 - [x] Retrofit
 - [x] JVM Unit tests
 - [x] Espresso tests
+- [x] SwipeRefreshLayout
+
+![screenshot](screenshot.png)
