@@ -22,7 +22,6 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/lbl_nonce"
         android:layout_toEndOf="@+id/lbl_nonce"
-        android:textStyle="bold"
         tools:text="214756" />
 
     <TextView
@@ -30,9 +29,10 @@
         style="@style/AppTheme.Text.Label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@id/lbl_nonce"
+        android:layout_below="@id/lbl_nonce"
+        android:layout_alignStart="@id/lbl_nonce"
+        android:layout_marginTop="@dimen/margin_items"
         android:layout_marginEnd="@dimen/margin_items"
-        android:layout_toStartOf="@id/timestamp"
         android:text="@string/lbl_timestamp"
         tools:ignore="RelativeOverlap" />
 
@@ -42,17 +42,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/lbl_timestamp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="@dimen/margin_edges"
-        android:textStyle="bold"
-        tools:text="1518167245" />
+        android:layout_toEndOf="@id/lbl_timestamp"
+        tools:text="2010-01-01 12:00:00" />
 
     <TextView
         android:id="@+id/lbl_hash"
         style="@style/AppTheme.Text.Label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/lbl_nonce"
+        android:layout_below="@+id/lbl_timestamp"
         android:layout_alignStart="@id/lbl_nonce"
         android:layout_marginTop="@dimen/margin_items"
         android:layout_marginEnd="@dimen/margin_items"
@@ -66,7 +64,6 @@
         android:layout_alignTop="@id/lbl_hash"
         android:layout_marginEnd="@dimen/margin_edges"
         android:layout_toEndOf="@id/lbl_hash"
-        android:textStyle="bold"
         tools:text="0xd5fea65e23ed575f637c53555c461f496f49b0993cfc59d781f9ad5d50bee50e" />
 
     <View

@@ -9,6 +9,7 @@ import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.item_transaction.view.*
 import uk.co.hughingram.ethscan.R
 import uk.co.hughingram.ethscan.network.EthereumTransaction
+import uk.co.hughingram.ethscan.network.humanReadableTimeStamp
 
 class TransactionAdapter(private val transactions: List<EthereumTransaction>) :
     RecyclerView.Adapter<TransactionViewHolder>() {
@@ -20,7 +21,7 @@ class TransactionAdapter(private val transactions: List<EthereumTransaction>) :
 
     override fun onBindViewHolder(holder: TransactionViewHolder, position: Int) {
         val transaction = transactions[position]
-        holder.timeStamp.text = transaction.timeStamp
+        holder.timeStamp.text = transaction.humanReadableTimeStamp()
         holder.nonce.text = transaction.nonce
         holder.hash.text = transaction.hash
         val directions =
