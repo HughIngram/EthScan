@@ -8,8 +8,8 @@ import android.widget.TextView
 import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.item_transaction.view.*
 import uk.co.hughingram.ethscan.R
-import uk.co.hughingram.ethscan.network.EthereumTransaction
-import uk.co.hughingram.ethscan.network.humanReadableTimeStamp
+import uk.co.hughingram.ethscan.model.EthereumTransaction
+import uk.co.hughingram.ethscan.model.humanReadableTimeStamp
 
 class TransactionAdapter(private val transactions: List<EthereumTransaction>) :
     RecyclerView.Adapter<TransactionViewHolder>() {
