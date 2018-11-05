@@ -30,7 +30,7 @@ class TransactionDetailFragment : Fragment() {
     private fun showData() {
         val transaction = TransactionDetailFragmentArgs.fromBundle(arguments).transaction ?: return
         timestamp.text = transaction.humanReadableTimeStamp()
-        block_hash.text = transaction.blockHash
+        transaction_hash.text = transaction.hash
         from.text = transaction.from
         to.text = transaction.to
         value.text = transaction.value
