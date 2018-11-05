@@ -149,7 +149,7 @@
             app:layout_constraintTop_toBottomOf="@+id/divider_value" />
 
         <TextView
-            android:id="@+id/block_hash"
+            android:id="@+id/transaction_hash"
             style="@style/AppTheme.Text.Value"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -168,7 +168,7 @@
             android:background="@color/colorPrimary"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/block_hash" />
+            app:layout_constraintTop_toBottomOf="@id/transaction_hash" />
 
         <TextView
             android:id="@+id/lbl_gas_fees"
