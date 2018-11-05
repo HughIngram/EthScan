@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_transaction_detail.*
 import uk.co.hughingram.ethscan.R
+import uk.co.hughingram.ethscan.network.calculateGasFee
 
 
 class TransactionDetailFragment : Fragment() {
@@ -22,11 +23,16 @@ class TransactionDetailFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        val transaction = TransactionDetailFragmentArgs.fromBundle(arguments).transaction
-        timestamp.text = transaction?.timeStamp
-        block_hash.text = transaction?.blockHash
-        from.text = transaction?.from
-        to.text = transaction?.to
-        data.text = transaction?.input
+        showData()
+    }
+
+    private fun showData() {
+        val transaction = TransactionDetailFragmentArgs.fromBundle(arguments).transaction ?: return
+        timestamp.text = transaction.timeStamp
+        block_hash.text = transaction.blockHash
+        from.text = transaction.from
+        to.text = transaction.to
+        data.text = transaction.input
+        gas_fees.text = transaction.calculateGasFee().toString()
     }
 }

@@ -135,13 +135,42 @@
         app:layout_constraintTop_toBottomOf="@id/block_hash" />
 
     <TextView
+        android:id="@+id/lbl_gas_fees"
+        style="@style/AppTheme.Text.Label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_edges"
+        android:text="@string/lbl_gas_fees"
+        app:layout_constraintTop_toBottomOf="@id/divider_hash" />
+
+    <TextView
+        android:id="@+id/gas_fees"
+        style="@style/AppTheme.Text.Value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_items"
+        app:layout_constraintStart_toStartOf="@id/values_guideline"
+        app:layout_constraintTop_toBottomOf="@id/lbl_gas_fees"
+        tools:text="5315300000000" />
+
+    <View
+        android:id="@+id/divider_gas_fees"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="@dimen/margin_edges"
+        android:background="@color/colorPrimary"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gas_fees" />
+
+    <TextView
         android:id="@+id/lbl_data"
         style="@style/AppTheme.Text.Label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_edges"
         android:text="@string/lbl_data"
-        app:layout_constraintTop_toBottomOf="@id/divider_hash" />
+        app:layout_constraintTop_toBottomOf="@id/divider_gas_fees" />
 
     <TextView
         android:id="@+id/data"
@@ -150,6 +179,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_items"
         app:layout_constraintStart_toStartOf="@id/values_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/lbl_data"
         tools:text="0x28814f030000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" />
 
