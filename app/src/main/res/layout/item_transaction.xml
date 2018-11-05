@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/lbl_nonce"
+        style="@style/AppTheme.Text.Label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="@dimen/margin_edges"
+        android:layout_marginTop="@dimen/margin_edges"
+        android:layout_marginEnd="@dimen/margin_items"
+        android:text="@string/lbl_nonce" />
+
+    <TextView
+        android:id="@+id/nonce"
+        style="@style/AppTheme.Text.Value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/lbl_nonce"
+        android:layout_toEndOf="@+id/lbl_nonce"
+        tools:text="214756" />
+
+    <TextView
+        android:id="@+id/lbl_timestamp"
+        style="@style/AppTheme.Text.Label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lbl_nonce"
+        android:layout_alignStart="@id/lbl_nonce"
+        android:layout_marginTop="@dimen/margin_items"
+        android:layout_marginEnd="@dimen/margin_items"
+        android:text="@string/lbl_timestamp"
+        tools:ignore="RelativeOverlap" />
+
+    <TextView
+        android:id="@+id/timestamp"
+        style="@style/AppTheme.Text.Value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/lbl_timestamp"
+        android:layout_toEndOf="@id/lbl_timestamp"
+        tools:text="2010-01-01 12:00:00" />
+
+    <TextView
+        android:id="@+id/lbl_hash"
+        style="@style/AppTheme.Text.Label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lbl_timestamp"
+        android:layout_alignStart="@id/lbl_nonce"
+        android:layout_marginTop="@dimen/margin_items"
+        android:layout_marginEnd="@dimen/margin_items"
+        android:text="@string/lbl_hash" />
+
+    <TextView
+        android:id="@+id/hash"
+        style="@style/AppTheme.Text.Value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/lbl_hash"
+        android:layout_marginEnd="@dimen/margin_edges"
+        android:layout_toEndOf="@id/lbl_hash"
+        tools:text="0xd5fea65e23ed575f637c53555c461f496f49b0993cfc59d781f9ad5d50bee50e" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/hash"
+        android:layout_marginLeft="@dimen/margin_edges"
+        android:layout_marginTop="@dimen/margin_items"
+        android:layout_marginRight="@dimen/margin_edges"
+        android:background="?attr/colorPrimary" />
+
+</RelativeLayout>

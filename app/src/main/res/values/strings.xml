@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Eth Scan</string>
+
+    <string name="lbl_timestamp">Timestamp (UTC)</string>
+    <string name="lbl_nonce">Nonce</string>
+    <string name="lbl_hash">Hash</string>
+    <string name="lbl_from">From</string>
+    <string name="lbl_to">To</string>
+    <string name="lbl_value">Value</string>
+    <string name="lbl_data">Data</string>
+    <string name="lbl_gas_fees">Gas Fees</string>
+    
 </resources>
