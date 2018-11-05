@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import androidx.navigation.findNavController
 import uk.co.hughingram.ethscan.R
-import uk.co.hughingram.ethscan.network.EthereumTransaction
+import uk.co.hughingram.ethscan.model.EthereumTransaction
 
 class MainActivity : AppCompatActivity() {
 

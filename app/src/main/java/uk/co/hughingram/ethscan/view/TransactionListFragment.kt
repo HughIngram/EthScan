@@ -13,7 +13,7 @@ import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.fragment_transaction_list.*
 import uk.co.hughingram.ethscan.R
 import uk.co.hughingram.ethscan.network.ApiClient
-import uk.co.hughingram.ethscan.network.EthereumTransaction
+import uk.co.hughingram.ethscan.model.EthereumTransaction
 
 class TransactionListFragment : Fragment() {
 
