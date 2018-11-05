@@ -2,9 +2,9 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     android:padding="16dp"
     tools:context=".view.TransactionDetailFragment">
 
@@ -60,6 +60,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_items"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/values_guideline"
         app:layout_constraintTop_toBottomOf="@id/lbl_from"
         tools:text="0x31b98d14007bdee637298086988a0bbd31184523" />
@@ -89,6 +90,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_items"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/values_guideline"
         app:layout_constraintTop_toBottomOf="@id/lbl_to"
         tools:text="0xfffa5813ed9a5db4880d7303db7d0cbe41bc771f" />
@@ -149,6 +151,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_items"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/values_guideline"
         app:layout_constraintTop_toBottomOf="@id/lbl_gas_fees"
         tools:text="5315300000000" />
@@ -178,8 +181,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_items"
-        app:layout_constraintStart_toStartOf="@id/values_guideline"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/values_guideline"
         app:layout_constraintTop_toBottomOf="@id/lbl_data"
         tools:text="0x28814f030000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" />
 
