@@ -15,9 +15,6 @@ An app for exploring the transactions of an Ethereum address.
 ![screenshot](screenshot.png)
 
 things to refactor...
-- [ ] memory leak from RxJava
-    * [ ] UI test: rotate the phone while a request is in progress
-    * [ ] the app crashes if rotated while loading
 - [ ] make a separate file for 'e2e' tests, using a real endpoint
 - [ ] model decoupled from Activity lifecycle
 - [ ] use Retrofit Rx plugin
@@ -34,3 +31,6 @@ things to refactor...
 - [x] use DI in Tests - mock the datasource
 
 ### current feature branch
+- [ ] memory leak from RxJava
+    * [ ] UI test: rotate the phone while a request is in progress
+    * [ ] the app crashes if rotated while loading
