@@ -1,5 +1,6 @@
 package uk.co.hughingram.ethscan
 
+import android.support.test.InstrumentationRegistry
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.UiController
 import android.support.test.espresso.ViewAction
@@ -15,9 +16,11 @@ import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.TypeSafeMatcher
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import uk.co.hughingram.ethscan.network.ApiClientProvider
 import uk.co.hughingram.ethscan.view.MainActivity
 
 
@@ -26,14 +29,18 @@ class UITests {
 
     @Rule
     @JvmField
-    val activityTestRule = ActivityTestRule(MainActivity::class.java, false, true)
+    val activityTestRule = ActivityTestRule(MainActivity::class.java, false, false)
+
+    @Before
+    fun setUp() {
+        val application = InstrumentationRegistry.getTargetContext().applicationContext
+        (application as ApiClientProvider).apiClient = MockApiClient()
+        activityTestRule.launchActivity(null)
+    }
 
     @Test
     fun openTransactionDetails() {
-        /** GIVEN - a list of transactions **/
-        Thread.sleep(2000) // let the transaction list load
-
-        /** WHEN - I click on the first item**/
+        /** WHEN - I click on the first transaction in the list **/
         val listIndexToClick = 0
         val listItemMatcher = nthChildOf(withId(R.id.transaction_adapter), listIndexToClick)
         val selectedTransactionHash = getText(
