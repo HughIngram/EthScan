@@ -10,7 +10,7 @@ import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.fragment_transaction_list.*
 import uk.co.hughingram.ethscan.R
 import uk.co.hughingram.ethscan.model.EthereumTransaction
-import uk.co.hughingram.ethscan.network.ApiClient
+import uk.co.hughingram.ethscan.network.ApiClientProvider
 
 class TransactionListFragment : BaseFragment() {
 
@@ -36,7 +36,7 @@ class TransactionListFragment : BaseFragment() {
     }
 
     private fun downloadTransactions() {
-        val apiClient = ApiClient()
+        val apiClient = (activity?.application as ApiClientProvider).apiClient
         apiClient.getTransactionList(ETH_ADDRESS)
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe {

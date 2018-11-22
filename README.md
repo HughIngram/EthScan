@@ -24,12 +24,13 @@ things to refactor...
     * add to readme
 - [ ] don't re-initialise Retrofit regularly
 - [ ] MVP pattern
-- [ ] use DI in Tests - mock the datasource
+   * [ ] injected presenter
 - [ ] more JVM tests
 - [ ] do not be wasteful when setting up recyclerview
+- [ ] repository pattern for data source
+- [ ] use multi modules for information hiding with `internal`
+- [x] dependency injection
+   * [x] data source
+- [x] use DI in Tests - mock the datasource
 
-### in progress
-- [ ] dependency injection
-   * data source
-   * presenter
-- when this is set up, we can UI test the crash when rotating while loading!
+### current feature branch
