@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.fragment_transaction_list.*
 import uk.co.hughingram.ethscan.R
@@ -37,7 +38,7 @@ class TransactionListFragment : BaseFragment() {
 
     private fun downloadTransactions() {
         val apiClient = (activity?.application as ApiClientProvider).apiClient
-        apiClient.getTransactionList(ETH_ADDRESS)
+        val updateList = apiClient.getTransactionList(ETH_ADDRESS)
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe {
                 swipe_container.isRefreshing = true
@@ -54,12 +55,20 @@ class TransactionListFragment : BaseFragment() {
                     Log.e("TransactionList", "error", e)
                 }
             )
+        disposables.add(updateList)
     }
 
     private fun initList(transactions: List<EthereumTransaction>) {
         val adapter = TransactionAdapter(transactions.sortedByDescending { it.nonce.toInt() })
         transaction_adapter.layoutManager = LinearLayoutManager(context)
         transaction_adapter.adapter = adapter
+    }
+
+    private val disposables = CompositeDisposable()
+
+    override fun onPause() {
+        super.onPause()
+        disposables.clear()
     }
 
 }

@@ -29,8 +29,8 @@ things to refactor...
 - [x] dependency injection
    * [x] data source
 - [x] use DI in Tests - mock the datasource
+- [x] memory leak from RxJava
+    * [x] UI test: rotate the phone while a request is in progress
+    * [x] fix app crash if rotated while loading
 
 ### current feature branch
-- [ ] memory leak from RxJava
-    * [ ] UI test: rotate the phone while a request is in progress
-    * [ ] the app crashes if rotated while loading
