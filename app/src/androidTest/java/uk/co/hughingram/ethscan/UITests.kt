@@ -1,6 +1,7 @@
 package uk.co.hughingram.ethscan
 
 import android.support.test.InstrumentationRegistry
+import android.support.test.InstrumentationRegistry.getInstrumentation
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.UiController
 import android.support.test.espresso.ViewAction
@@ -9,6 +10,7 @@ import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.matcher.ViewMatchers.*
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
+import android.support.test.uiautomator.UiDevice
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
@@ -16,7 +18,6 @@ import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.TypeSafeMatcher
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -31,15 +32,10 @@ class UITests {
     @JvmField
     val activityTestRule = ActivityTestRule(MainActivity::class.java, false, false)
 
-    @Before
-    fun setUp() {
-        val application = InstrumentationRegistry.getTargetContext().applicationContext
-        (application as ApiClientProvider).apiClient = MockApiClient()
-        activityTestRule.launchActivity(null)
-    }
-
     @Test
     fun openTransactionDetails() {
+        setUpMocksAndLaunch(loadSlowly = false)
+
         /** WHEN - I click on the first transaction in the list **/
         val listIndexToClick = 0
         val listItemMatcher = nthChildOf(withId(R.id.transaction_adapter), listIndexToClick)
@@ -52,6 +48,23 @@ class UITests {
         onView(withId(R.id.transaction_hash))
             .check(matches(withText(selectedTransactionHash)))
     }
+
+    @Test
+    fun rotatePhoneWhileLoading() {
+        val mockApiClient = setUpMocksAndLaunch(loadSlowly = true)
+        val device = UiDevice.getInstance(getInstrumentation())
+        device.setOrientationRight()
+        mockApiClient.finishLoading = true
+    }
+
+    private fun setUpMocksAndLaunch(loadSlowly: Boolean): MockApiClient {
+        val application = InstrumentationRegistry.getTargetContext().applicationContext
+        val mockApiClient = MockApiClient(loadSlowly = loadSlowly)
+        (application as ApiClientProvider).apiClient = mockApiClient
+        activityTestRule.launchActivity(null)
+        return mockApiClient
+    }
+
 }
 
 fun nthChildOf(parentMatcher: Matcher<View>, childPosition: Int): Matcher<View> = object : TypeSafeMatcher<View>() {
